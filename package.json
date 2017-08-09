@@ -1,9 +1,12 @@
 {
-  "name": "loopback-utilities",
+  "name": "@dynamox/loopback-utilities",
   "version": "1.0.0",
   "description": "Loopback utilities",
   "main": "index.js",
-  "repository": "https://github.com/dynamoxteam/loopback-utilities.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dynamoxteam/loopback-utilities.git"
+  },
   "license": "MIT",
   "dependencies": {
     "chai": "^4.1.1",
@@ -17,5 +20,16 @@
   },
   "scripts": {
     "test": "mocha --recursive test/*.test.js --reporter=nyan"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/dynamoxteam/loopback-utilities/issues"
+  },
+  "homepage": "https://github.com/dynamoxteam/loopback-utilities#readme",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "loopback"
+  ],
+  "author": "Thiago Oliveira <thiago@dynamox.net>"
 }
