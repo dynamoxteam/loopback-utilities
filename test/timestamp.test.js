@@ -17,6 +17,8 @@ describe('timestamp mixin', function () {
     timestamp(model, {});
   });
 
+  after(() => global.Date = OldDate);
+
   it('should define both properties as required and type Date', function () {
     const equal = {
       type: Date,
