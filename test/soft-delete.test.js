@@ -30,7 +30,7 @@ describe('soft-delete mixin', function () {
       }
     };
     model.emit('find', ctx, null, () => {
-      expect(ctx.args.filter.where.deleted).to.be.false;
+      expect(ctx.args.filter.where.deleted).to.be.deep.eq({neq: true});
       done();
     });
   });
