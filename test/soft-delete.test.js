@@ -21,6 +21,16 @@ describe('soft-delete mixin', function () {
     });
     expect(model.prototype.softDelete).to.be.a('function');
     expect(model.prototype.restore).to.be.a('function');
+    expect(model.remotes).to.have.lengthOf(2);
+  });
+
+  it('shouldn\'t define remote methods', function () {
+    const newModel = new TestModel();
+    softDelete(newModel, {
+      exposeSoftDelete: false,
+      exposeRestore: false
+    });
+    expect(newModel.remotes).to.have.lengthOf(0)
   });
 
   it('should apply active scope', function (done) {
