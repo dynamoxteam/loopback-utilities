@@ -30,8 +30,8 @@ describe('timestamp mixin', function () {
   });
 
   it('should set both createdAt and updatedAt on fresh model', function (done) {
-    const ctx = { isNewInstance: true, currentInstance: model };
-    model.emit('persist', ctx, () => {
+    const ctx = { isNewInstance: true, instance: model };
+    model.emit('before save', ctx, () => {
       const time = new OldDate('Jan 01 1970');
       expect(model.createdAt.getTime()).to.be.eql(fixedTime.getTime());
       expect(model.updatedAt.getTime()).to.be.eql(fixedTime.getTime());
@@ -44,10 +44,11 @@ describe('timestamp mixin', function () {
     model.createdAt = new OldDate();
     expect(now.getTime()).to.not.be.eql(fixedTime.getTime());
 
-    const ctx = { isNewInstance: false, currentInstance: model };
-    model.emit('persist', ctx, () => {
+    const data = {};
+    const ctx = { currentInstance: model, data };
+    model.emit('before save', ctx, () => {
       expect(model.createdAt.getTime()).to.be.eql(now.getTime());
-      expect(model.updatedAt.getTime()).to.be.eql(fixedTime.getTime());
+      expect(data.updatedAt.getTime()).to.be.eql(fixedTime.getTime());
       done();
     });
   });
