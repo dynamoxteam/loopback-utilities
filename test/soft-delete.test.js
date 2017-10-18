@@ -31,7 +31,7 @@ describe('soft-delete mixin', function () {
       exposeRestore: false
     });
     expect(newModel.remotes).to.have.lengthOf(0)
-  })
+  });
 
   it('should apply active scope', function (done) {
     const ctx = {
